@@ -1,5 +1,4 @@
 ---@meta
-
 ---
 ---`slnunicode`, from the `selene` libraries, http://luaforge.net/projects/sln. This library has been slightly extended
 ---so that the `unicode.utf8.*` functions also accept the first 256 values
@@ -7,7 +6,76 @@
 ---explained above. We have no plans to provide more like this because you can
 ---basically do all that you want in *Lua*.
 
-unicode = {}
+--- https://github.com/LuaDist/slnunicode/blob/e8abd35c5f0f5a9084442d8665cbc9c3d169b5fd/slnunico.c#L1285-L1302
+
+---there are four string-like ctype closures:
+---unicode.ascii, latin1, utf8 and grapheme
+---
+---ascii and latin1 are single-byte like string,
+---but use the unicode table for upper/lower and character classes
+---ascii does not touch bytes > 127 on upper/lower
+---
+---ascii or latin1 can be used as locale-independent string replacement.
+---(There is a compile switch to do this automatically for ascii).
+--
+---UTF-8 operates on UTF-8 sequences as of RFC 3629:
+---1 byte 0-7F, 2 byte 80-7FF, 3 byte 800-FFFF, 4 byte 1000-10FFFF
+---(not exclusing UTF-16 surrogate characters)
+---Any byte not part of such a sequence is treated as it's (Latin-1) value.
+---
+---Grapheme takes care of grapheme clusters, which are characters followed by
+---"grapheme extension" characters (Mn+Me) like combining diacritical marks.
+---
+---calls are:
+---len(str)
+---sub(str, start [,end=-1])
+---byte(str, start [,end=-1])
+---lower(str)
+---upper(str)
+---char(i [,j...])
+---reverse(str)
+---
+---same as in string: rep, format, dump
+---TODO: use char count with %s in format? (sub does the job)
+---TODO: grapheme.byte: only first code of any cluster?
+--
+---find, gfind, gsub: done, but need thorough testing ...:
+---ascii does not match them on any %class (but on ., literals and ranges)
+---behaviour of %class with class not ASCII is undefined
+---frontier %f currently disabled -- should we?
+---
+---character classes are:
+---%a L* (Lu+Ll+Lt+Lm+Lo)
+---%c Cc
+---%d 0-9
+---%l Ll
+---%n N* (Nd+Nl+No, new)
+---%p P* (Pc+Pd+Ps+Pe+Pi+Pf+Po)
+---%s Z* (Zs+Zl+Zp) plus the controls 9-13 (HT,LF,VT,FF,CR)
+---%u Lu (also Lt ?)
+---%w %a+%n+Pc (e.g. '_')
+---%x 0-9A-Za-z
+---%z the 0 byte
+---c.f. http://unicode.org/Public/UNIDATA/UCD.html#General_Category_Values
+---http://unicode.org/Public/UNIDATA/UnicodeData.txt
+---
+---NOTE: find positions are in bytes for all ctypes!
+---use ascii.sub to cut found ranges!
+---this is a) faster b) more reliable
+---
+---UTF-8 behaviour: match is by codes, code ranges are supported
+---
+---grapheme behaviour: any %class, '.' and range match includes
+---any following grapheme extensions.
+---Ranges apply to single code points only.
+---If a [] enumeration contains a grapheme cluster,
+---this matches only the exact same cluster.
+---However, a literal single 'o' standalone or in an [] enumeration
+---will match just that 'o',	even if it has a extension in the string.
+---Consequently, grapheme match positions are not always cluster positions.
+--
+
+local unicode = {}
 
 unicode.ascii = {}
 
@@ -27,8 +95,6 @@ function unicode.ascii.reverse() end
 function unicode.ascii.sub() end
 function unicode.ascii.upper() end
 
-
-
 unicode.grapheme = {}
 
 function unicode.grapheme.byte() end
@@ -46,8 +112,6 @@ function unicode.grapheme.rep() end
 function unicode.grapheme.reverse() end
 function unicode.grapheme.sub() end
 function unicode.grapheme.upper() end
-
-
 
 unicode.latin1 = {}
 
@@ -67,22 +131,106 @@ function unicode.latin1.reverse() end
 function unicode.latin1.sub() end
 function unicode.latin1.upper() end
 
-
-
 unicode.utf8 = {}
 
-function unicode.utf8.byte() end
-function unicode.utf8.char() end
+---
+---@param s string
+---@param i? integer
+---@param j? integer
+---
+---@return integer ...
+---
+function unicode.utf8.byte(s, i, j) end
+
+---
+---@param byte integer
+---@param ... integer
+---
+---@return string
+function unicode.utf8.char(byte, ...) end
+
 function unicode.utf8.dump() end
-function unicode.utf8.find() end
-function unicode.utf8.format() end
+
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---@param plain? boolean
+---
+---@return integer start
+---@return integer end
+---@return any ... captured
+function unicode.utf8.find(s, pattern, init, plain) end
+
+---
+---@param s any
+---@param ... any
+---
+---@return string
+function unicode.utf8.format(s, ...) end
+
 function unicode.utf8.gfind() end
-function unicode.utf8.gmatch() end
-function unicode.utf8.gsub() end
-function unicode.utf8.len() end
-function unicode.utf8.lower() end
-function unicode.utf8.match() end
-function unicode.utf8.rep() end
-function unicode.utf8.reverse() end
-function unicode.utf8.sub() end
-function unicode.utf8.upper() end
+
+---
+---@param s string
+---@param pattern string
+---
+---@return fun():string, ...
+function unicode.utf8.gmatch(s, pattern) end
+
+---
+---@param s string
+---@param pattern string
+---@param repl string|number|table|function
+---@param n? integer
+---
+---@return string
+---@return integer count
+function unicode.utf8.gsub(s, pattern, repl, n) end
+
+---
+---@param s string
+---
+---@return integer
+function unicode.utf8.len(s) end
+
+---
+---@param str string
+---
+---@return string
+function unicode.utf8.lower(str) end
+
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return any ...
+function unicode.utf8.match(s, pattern, init) end
+
+---@param s string
+---@param n integer
+---
+---@return string
+function unicode.utf8.rep(s, n) end
+
+---
+---@param str string
+---
+---@return string
+function unicode.utf8.reverse(str) end
+
+---
+---@param str string
+---@param i integer
+---@param j? integer
+---
+---@return string
+function unicode.utf8.sub(str, i, j) end
+
+---
+---@param str string
+---
+---@return string
+function unicode.utf8.upper(str) end
+
+return unicode

@@ -134,6 +134,8 @@ function unicode.latin1.upper() end
 unicode.utf8 = {}
 
 ---
+---Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
 ---@param s string
 ---@param i? integer
 ---@param j? integer
@@ -143,6 +145,8 @@ unicode.utf8 = {}
 function unicode.utf8.byte(s, i, j) end
 
 ---
+---Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
 ---@param byte integer
 ---@param ... integer
 ---
@@ -151,6 +155,8 @@ function unicode.utf8.char(byte, ...) end
 
 function unicode.utf8.dump() end
 
+---
+---Looks for the first match of pattern in the string.
 ---
 ---@param s string
 ---@param pattern string
@@ -163,6 +169,8 @@ function unicode.utf8.dump() end
 function unicode.utf8.find(s, pattern, init, plain) end
 
 ---
+---Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---
 ---@param s any
 ---@param ... any
 ---
@@ -172,12 +180,16 @@ function unicode.utf8.format(s, ...) end
 function unicode.utf8.gfind() end
 
 ---
+---Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
 ---@param s string
 ---@param pattern string
 ---
 ---@return fun():string, ...
 function unicode.utf8.gmatch(s, pattern) end
 
+---
+---Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
 ---
 ---@param s string
 ---@param pattern string
@@ -189,17 +201,24 @@ function unicode.utf8.gmatch(s, pattern) end
 function unicode.utf8.gsub(s, pattern, repl, n) end
 
 ---
+---Returns its length.
+---
 ---@param s string
 ---
 ---@return integer
 function unicode.utf8.len(s) end
 
 ---
----@param str string
+---Returns a copy of this string with all uppercase letters changed to lowercase.
+---
+---@param s string
 ---
 ---@return string
-function unicode.utf8.lower(str) end
+function unicode.utf8.lower(s) end
 
+---
+---Looks for the first match of pattern in the string.
+---
 ---@param s string
 ---@param pattern string
 ---@param init? integer
@@ -207,6 +226,9 @@ function unicode.utf8.lower(str) end
 ---@return any ...
 function unicode.utf8.match(s, pattern, init) end
 
+---
+---Returns a string that is the concatenation of `n` copies of the string `s`.
+---
 ---@param s string
 ---@param n integer
 ---
@@ -214,23 +236,29 @@ function unicode.utf8.match(s, pattern, init) end
 function unicode.utf8.rep(s, n) end
 
 ---
----@param str string
+---Returns a string that is the string `s` reversed.
+---
+---@param s string
 ---
 ---@return string
-function unicode.utf8.reverse(str) end
+function unicode.utf8.reverse(s) end
 
 ---
----@param str string
+---Returns the substring of the string that starts at `i` and continues until `j`.
+---
+---@param s string
 ---@param i integer
 ---@param j? integer
 ---
 ---@return string
-function unicode.utf8.sub(str, i, j) end
+function unicode.utf8.sub(s, i, j) end
 
 ---
----@param str string
+---Returns a copy of this string with all lowercase letters changed to uppercase.
+---
+---@param s string
 ---
 ---@return string
-function unicode.utf8.upper(str) end
+function unicode.utf8.upper(s) end
 
 return unicode

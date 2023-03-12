@@ -5,9 +5,7 @@
 ---of plane 18. This is the range *LuaTeX* uses for raw binary output, as
 ---explained above. We have no plans to provide more like this because you can
 ---basically do all that you want in *Lua*.
-
 --- https://github.com/LuaDist/slnunicode/blob/e8abd35c5f0f5a9084442d8665cbc9c3d169b5fd/slnunico.c#L1285-L1302
-
 ---there are four string-like ctype closures:
 ---unicode.ascii, latin1, utf8 and grapheme
 ---
@@ -74,62 +72,259 @@
 ---will match just that 'o',	even if it has a extension in the string.
 ---Consequently, grapheme match positions are not always cluster positions.
 --
-
 local unicode = {}
 
 unicode.ascii = {}
 
-function unicode.ascii.byte() end
-function unicode.ascii.char() end
-function unicode.ascii.dump() end
+---
+---Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@param s string
+---@param i? integer
+---@param j? integer
+---
+---@return integer ...
+function unicode.ascii.byte(s, i, j) end
+
+---
+---Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@param byte integer
+---@param ... integer
+---
+---@return string
+function unicode.ascii.char(byte, ...) end
+
+---
+---Returns a string containing a binary representation (a binary chunk) of the given function.
+---
+---@param f fun(...: any):...unknown
+function unicode.ascii.dump(f) end
 function unicode.ascii.find() end
 function unicode.ascii.format() end
 function unicode.ascii.gfind() end
 function unicode.ascii.gmatch() end
 function unicode.ascii.gsub() end
-function unicode.ascii.len() end
-function unicode.ascii.lower() end
+
+---
+---Returns its length.
+---
+---@param s string
+---
+---@return integer
+function unicode.ascii.len(s) end
+
+---
+---Returns a copy of this string with all uppercase letters changed to lowercase.
+---
+---@param s string
+---
+---@return string
+function unicode.ascii.lower(s) end
 function unicode.ascii.match() end
-function unicode.ascii.rep() end
-function unicode.ascii.reverse() end
-function unicode.ascii.sub() end
-function unicode.ascii.upper() end
 
-unicode.grapheme = {}
+---
+---Returns a string that is the concatenation of `n` copies of the string `s`.
+---
+---@param s string
+---@param n integer
+---
+---@return string
+function unicode.ascii.rep(s, n) end
 
-function unicode.grapheme.byte() end
-function unicode.grapheme.char() end
-function unicode.grapheme.dump() end
-function unicode.grapheme.find() end
-function unicode.grapheme.format() end
-function unicode.grapheme.gfind() end
-function unicode.grapheme.gmatch() end
-function unicode.grapheme.gsub() end
-function unicode.grapheme.len() end
-function unicode.grapheme.lower() end
-function unicode.grapheme.match() end
-function unicode.grapheme.rep() end
-function unicode.grapheme.reverse() end
-function unicode.grapheme.sub() end
-function unicode.grapheme.upper() end
+---
+---Returns a string that is the string `s` reversed.
+---
+---@param s string
+---
+---@return string
+function unicode.ascii.reverse(s) end
+
+---
+---Returns the substring of the string that starts at `i` and continues until `j`.
+---
+---@param s string
+---@param i integer
+---@param j? integer
+---
+---@return string
+function unicode.ascii.sub(s, i, j) end
+
+---
+---Returns a copy of this string with all lowercase letters changed to uppercase.
+---
+---@param s string
+---
+---@return string
+function unicode.ascii.upper(s) end
 
 unicode.latin1 = {}
 
-function unicode.latin1.byte() end
-function unicode.latin1.char() end
-function unicode.latin1.dump() end
+---
+---Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@param s string
+---@param i? integer
+---@param j? integer
+---
+---@return integer ...
+function unicode.latin1.byte(s, i, j) end
+
+---
+---Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@param byte integer
+---@param ... integer
+---
+---@return string
+function unicode.latin1.char(byte, ...) end
+
+---
+---Returns a string containing a binary representation (a binary chunk) of the given function.
+---
+---@param f fun(...: any):...unknown
+function unicode.latin1.dump(f) end
 function unicode.latin1.find() end
 function unicode.latin1.format() end
 function unicode.latin1.gfind() end
 function unicode.latin1.gmatch() end
 function unicode.latin1.gsub() end
-function unicode.latin1.len() end
-function unicode.latin1.lower() end
+
+---
+---Returns its length.
+---
+---@param s string
+---
+---@return integer
+function unicode.latin1.len(s) end
+
+---
+---Returns a copy of this string with all uppercase letters changed to lowercase.
+---
+---@param s string
+---
+---@return string
+function unicode.latin1.lower(s) end
 function unicode.latin1.match() end
-function unicode.latin1.rep() end
-function unicode.latin1.reverse() end
-function unicode.latin1.sub() end
-function unicode.latin1.upper() end
+
+---
+---Returns a string that is the concatenation of `n` copies of the string `s`.
+---
+---@param s string
+---@param n integer
+---
+---@return string
+function unicode.latin1.rep(s, n) end
+
+---
+---Returns a string that is the string `s` reversed.
+---
+---@param s string
+---
+---@return string
+function unicode.latin1.reverse(s) end
+
+---
+---Returns the substring of the string that starts at `i` and continues until `j`.
+---
+---@param s string
+---@param i integer
+---@param j? integer
+---
+---@return string
+function unicode.latin1.sub(s, i, j) end
+
+---
+---Returns a copy of this string with all lowercase letters changed to uppercase.
+---
+---@param s string
+---
+---@return string
+function unicode.latin1.upper(s) end
+
+unicode.grapheme = {}
+
+---
+---Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@param s string
+---@param i? integer
+---@param j? integer
+---
+---@return integer ...
+function unicode.grapheme.byte(s, i, j) end
+
+---
+---Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@param byte integer
+---@param ... integer
+---
+---@return string
+function unicode.grapheme.char(byte, ...) end
+
+---
+---Returns a string containing a binary representation (a binary chunk) of the given function.
+---
+---@param f fun(...: any):...unknown
+function unicode.grapheme.dump(f) end
+function unicode.grapheme.find() end
+function unicode.grapheme.format() end
+function unicode.grapheme.gfind() end
+function unicode.grapheme.gmatch() end
+function unicode.grapheme.gsub() end
+
+---
+---Returns its length.
+---
+---@param s string
+---
+---@return integer
+function unicode.grapheme.len(s) end
+
+---
+---Returns a copy of this string with all uppercase letters changed to lowercase.
+---
+---@param s string
+---
+---@return string
+function unicode.grapheme.lower(s) end
+function unicode.grapheme.match() end
+
+---
+---Returns a string that is the concatenation of `n` copies of the string `s`.
+---
+---@param s string
+---@param n integer
+---
+---@return string
+function unicode.grapheme.rep(s, n) end
+
+---
+---Returns a string that is the string `s` reversed.
+---
+---@param s string
+---
+---@return string
+function unicode.grapheme.reverse(s) end
+
+---
+---Returns the substring of the string that starts at `i` and continues until `j`.
+---
+---@param s string
+---@param i integer
+---@param j? integer
+---
+---@return string
+function unicode.grapheme.sub(s, i, j) end
+
+---
+---Returns a copy of this string with all lowercase letters changed to uppercase.
+---
+---@param s string
+---
+---@return string
+function unicode.grapheme.upper(s) end
 
 unicode.utf8 = {}
 
@@ -141,7 +336,6 @@ unicode.utf8 = {}
 ---@param j? integer
 ---
 ---@return integer ...
----
 function unicode.utf8.byte(s, i, j) end
 
 ---
@@ -153,7 +347,11 @@ function unicode.utf8.byte(s, i, j) end
 ---@return string
 function unicode.utf8.char(byte, ...) end
 
-function unicode.utf8.dump() end
+---
+---Returns a string containing a binary representation (a binary chunk) of the given function.
+---
+---@param f fun(...: any):...unknown
+function unicode.utf8.dump(f) end
 
 ---
 ---Looks for the first match of pattern in the string.

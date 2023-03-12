@@ -101,7 +101,15 @@ function unicode.ascii.char(byte, ...) end
 ---@param f fun(...: any):...unknown
 function unicode.ascii.dump(f) end
 function unicode.ascii.find() end
-function unicode.ascii.format() end
+
+---
+---Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@param s any
+---@param ... any
+---
+---@return string
+function unicode.ascii.format(s, ...) end
 function unicode.ascii.gfind() end
 function unicode.ascii.gmatch() end
 function unicode.ascii.gsub() end
@@ -121,7 +129,15 @@ function unicode.ascii.len(s) end
 ---
 ---@return string
 function unicode.ascii.lower(s) end
-function unicode.ascii.match() end
+---
+---Looks for the first match of pattern in the string.
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return any ...
+function unicode.ascii.match(s, pattern, init) end
 
 ---
 ---Returns a string that is the concatenation of `n` copies of the string `s`.
@@ -185,7 +201,15 @@ function unicode.latin1.char(byte, ...) end
 ---@param f fun(...: any):...unknown
 function unicode.latin1.dump(f) end
 function unicode.latin1.find() end
-function unicode.latin1.format() end
+
+---
+---Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@param s any
+---@param ... any
+---
+---@return string
+function unicode.latin1.format(s, ...) end
 function unicode.latin1.gfind() end
 function unicode.latin1.gmatch() end
 function unicode.latin1.gsub() end
@@ -205,7 +229,16 @@ function unicode.latin1.len(s) end
 ---
 ---@return string
 function unicode.latin1.lower(s) end
-function unicode.latin1.match() end
+
+---
+---Looks for the first match of pattern in the string.
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return any ...
+function unicode.latin1.match(s, pattern, init) end
 
 ---
 ---Returns a string that is the concatenation of `n` copies of the string `s`.
@@ -269,7 +302,15 @@ function unicode.grapheme.char(byte, ...) end
 ---@param f fun(...: any):...unknown
 function unicode.grapheme.dump(f) end
 function unicode.grapheme.find() end
-function unicode.grapheme.format() end
+
+---
+---Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@param s any
+---@param ... any
+---
+---@return string
+function unicode.grapheme.format(s, ...) end
 function unicode.grapheme.gfind() end
 function unicode.grapheme.gmatch() end
 function unicode.grapheme.gsub() end
@@ -289,7 +330,15 @@ function unicode.grapheme.len(s) end
 ---
 ---@return string
 function unicode.grapheme.lower(s) end
-function unicode.grapheme.match() end
+---
+---Looks for the first match of pattern in the string.
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return any ...
+function unicode.grapheme.match(s, pattern, init) end
 
 ---
 ---Returns a string that is the concatenation of `n` copies of the string `s`.

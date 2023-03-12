@@ -1,11 +1,5 @@
 ---@meta
----
----`slnunicode`, from the `selene` libraries, http://luaforge.net/projects/sln. This library has been slightly extended
----so that the `unicode.utf8.*` functions also accept the first 256 values
----of plane 18. This is the range *LuaTeX* uses for raw binary output, as
----explained above. We have no plans to provide more like this because you can
----basically do all that you want in *Lua*.
---- https://github.com/LuaDist/slnunicode/blob/e8abd35c5f0f5a9084442d8665cbc9c3d169b5fd/slnunico.c#L1285-L1302
+---The definitions are developed in this repository: https://github.com/LuaCATS/slnunicode
 
 ---
 ---there are four string-like ctype closures:

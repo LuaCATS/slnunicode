@@ -1,6 +1,5 @@
-# slnunicode
-Definitions for the slnunicode
+[![Luarocks](https://img.shields.io/luarocks/v/slnunicode?label=Luarocks&logo=Lua)](https://luarocks.org/modules/slnunicode)
 
-https://github.com/LuaDist/slnunicode
+# Definitions for the slnunicode library
 
-https://luarocks.org/modules/luarocks/slnunicode
+Type definitions for the [slnunicode](https://github.com/LuaDist/slnunicode) library.

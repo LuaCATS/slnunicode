@@ -1,4 +1,4 @@
-[![Luarocks](https://img.shields.io/luarocks/v/luarocks/slnunicode?label=Luarocks&logo=Lua)](https://luarocks.org/modules/slnunicode)
+[![Luarocks](https://img.shields.io/luarocks/v/luarocks/slnunicode?label=Luarocks&logo=Lua)](https://luarocks.org/modules/luarocks/slnunicode)
 
 # Definitions for the slnunicode library
 

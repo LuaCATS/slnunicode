@@ -6,6 +6,8 @@
 ---explained above. We have no plans to provide more like this because you can
 ---basically do all that you want in *Lua*.
 --- https://github.com/LuaDist/slnunicode/blob/e8abd35c5f0f5a9084442d8665cbc9c3d169b5fd/slnunico.c#L1285-L1302
+
+---
 ---there are four string-like ctype closures:
 ---unicode.ascii, latin1, utf8 and grapheme
 ---
@@ -23,55 +25,6 @@
 ---
 ---Grapheme takes care of grapheme clusters, which are characters followed by
 ---"grapheme extension" characters (Mn+Me) like combining diacritical marks.
----
----calls are:
----len(str)
----sub(str, start [,end=-1])
----byte(str, start [,end=-1])
----lower(str)
----upper(str)
----char(i [,j...])
----reverse(str)
----
----same as in string: rep, format, dump
----TODO: use char count with %s in format? (sub does the job)
----TODO: grapheme.byte: only first code of any cluster?
---
----find, gfind, gsub: done, but need thorough testing ...:
----ascii does not match them on any %class (but on ., literals and ranges)
----behaviour of %class with class not ASCII is undefined
----frontier %f currently disabled -- should we?
----
----character classes are:
----%a L* (Lu+Ll+Lt+Lm+Lo)
----%c Cc
----%d 0-9
----%l Ll
----%n N* (Nd+Nl+No, new)
----%p P* (Pc+Pd+Ps+Pe+Pi+Pf+Po)
----%s Z* (Zs+Zl+Zp) plus the controls 9-13 (HT,LF,VT,FF,CR)
----%u Lu (also Lt ?)
----%w %a+%n+Pc (e.g. '_')
----%x 0-9A-Za-z
----%z the 0 byte
----c.f. http://unicode.org/Public/UNIDATA/UCD.html#General_Category_Values
----http://unicode.org/Public/UNIDATA/UnicodeData.txt
----
----NOTE: find positions are in bytes for all ctypes!
----use ascii.sub to cut found ranges!
----this is a) faster b) more reliable
----
----UTF-8 behaviour: match is by codes, code ranges are supported
----
----grapheme behaviour: any %class, '.' and range match includes
----any following grapheme extensions.
----Ranges apply to single code points only.
----If a [] enumeration contains a grapheme cluster,
----this matches only the exact same cluster.
----However, a literal single 'o' standalone or in an [] enumeration
----will match just that 'o',	even if it has a extension in the string.
----Consequently, grapheme match positions are not always cluster positions.
---
 local unicode = {}
 
 unicode.ascii = {}
@@ -100,7 +53,17 @@ function unicode.ascii.char(byte, ...) end
 ---
 ---@param f fun(...: any):...unknown
 function unicode.ascii.dump(f) end
-function unicode.ascii.find() end
+
+---
+---Looks for the first match of pattern in the string.
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return integer start
+---@return integer end
+function unicode.ascii.find(s, pattern, init) end
 
 ---
 ---Returns a formatted version of its variable number of arguments following the description given in its first argument.
@@ -110,9 +73,27 @@ function unicode.ascii.find() end
 ---
 ---@return string
 function unicode.ascii.format(s, ...) end
-function unicode.ascii.gfind() end
-function unicode.ascii.gmatch() end
-function unicode.ascii.gsub() end
+
+---
+---Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@param s string
+---@param pattern string
+---
+---@return fun():string, ...
+function unicode.ascii.gmatch(s, pattern) end
+
+---
+---Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@param s string
+---@param pattern string
+---@param repl string|number|table|function
+---@param n? integer
+---s, pattern, repl, n
+---@return string
+---@return integer count
+function unicode.ascii.gsub(s, pattern, repl, n) end
 
 ---
 ---Returns its length.
@@ -129,6 +110,7 @@ function unicode.ascii.len(s) end
 ---
 ---@return string
 function unicode.ascii.lower(s) end
+
 ---
 ---Looks for the first match of pattern in the string.
 ---
@@ -200,7 +182,17 @@ function unicode.latin1.char(byte, ...) end
 ---
 ---@param f fun(...: any):...unknown
 function unicode.latin1.dump(f) end
-function unicode.latin1.find() end
+
+---
+---Looks for the first match of pattern in the string.
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return integer start
+---@return integer end
+function unicode.latin1.find(s, pattern, init) end
 
 ---
 ---Returns a formatted version of its variable number of arguments following the description given in its first argument.
@@ -210,9 +202,27 @@ function unicode.latin1.find() end
 ---
 ---@return string
 function unicode.latin1.format(s, ...) end
-function unicode.latin1.gfind() end
-function unicode.latin1.gmatch() end
-function unicode.latin1.gsub() end
+
+---
+---Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@param s string
+---@param pattern string
+---
+---@return fun():string, ...
+function unicode.latin1.gmatch(s, pattern) end
+
+---
+---Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@param s string
+---@param pattern string
+---@param repl string|number|table|function
+---@param n? integer
+---
+---@return string
+---@return integer count
+function unicode.latin1.gsub(s, pattern, repl, n) end
 
 ---
 ---Returns its length.
@@ -301,7 +311,17 @@ function unicode.grapheme.char(byte, ...) end
 ---
 ---@param f fun(...: any):...unknown
 function unicode.grapheme.dump(f) end
-function unicode.grapheme.find() end
+
+---
+---Looks for the first match of pattern in the string.
+---
+---@param s string
+---@param pattern string
+---@param init? integer
+---
+---@return integer start
+---@return integer end
+function unicode.grapheme.find(s, pattern, init) end
 
 ---
 ---Returns a formatted version of its variable number of arguments following the description given in its first argument.
@@ -311,9 +331,27 @@ function unicode.grapheme.find() end
 ---
 ---@return string
 function unicode.grapheme.format(s, ...) end
-function unicode.grapheme.gfind() end
-function unicode.grapheme.gmatch() end
-function unicode.grapheme.gsub() end
+
+---
+---Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@param s string
+---@param pattern string
+---
+---@return fun():string, ...
+function unicode.grapheme.gmatch(s, pattern) end
+
+---
+---Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@param s string
+---@param pattern string
+---@param repl string|number|table|function
+---@param n? integer
+---
+---@return string
+---@return integer count
+function unicode.grapheme.gsub(s, pattern, repl, n) end
 
 ---
 ---Returns its length.
@@ -408,12 +446,10 @@ function unicode.utf8.dump(f) end
 ---@param s string
 ---@param pattern string
 ---@param init? integer
----@param plain? boolean
 ---
 ---@return integer start
 ---@return integer end
----@return any ... captured
-function unicode.utf8.find(s, pattern, init, plain) end
+function unicode.utf8.find(s, pattern, init) end
 
 ---
 ---Returns a formatted version of its variable number of arguments following the description given in its first argument.
@@ -423,8 +459,6 @@ function unicode.utf8.find(s, pattern, init, plain) end
 ---
 ---@return string
 function unicode.utf8.format(s, ...) end
-
-function unicode.utf8.gfind() end
 
 ---
 ---Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.

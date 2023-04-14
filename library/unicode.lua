@@ -19,8 +19,12 @@
 ---
 ---Grapheme takes care of grapheme clusters, which are characters followed by
 ---"grapheme extension" characters (Mn+Me) like combining diacritical marks.
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 local unicode = {}
 
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 unicode.ascii = {}
 
 ---
@@ -31,6 +35,8 @@ unicode.ascii = {}
 ---@param j? integer
 ---
 ---@return integer ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.byte(s, i, j) end
 
 ---
@@ -40,12 +46,16 @@ function unicode.ascii.byte(s, i, j) end
 ---@param ... integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.char(byte, ...) end
 
 ---
 ---Returns a string containing a binary representation (a binary chunk) of the given function.
 ---
 ---@param f fun(...: any):...unknown
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.dump(f) end
 
 ---
@@ -57,6 +67,8 @@ function unicode.ascii.dump(f) end
 ---
 ---@return integer start
 ---@return integer end
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.find(s, pattern, init) end
 
 ---
@@ -66,6 +78,8 @@ function unicode.ascii.find(s, pattern, init) end
 ---@param ... any
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.format(s, ...) end
 
 ---
@@ -75,6 +89,8 @@ function unicode.ascii.format(s, ...) end
 ---@param pattern string
 ---
 ---@return fun():string, ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.gmatch(s, pattern) end
 
 ---
@@ -87,6 +103,8 @@ function unicode.ascii.gmatch(s, pattern) end
 ---s, pattern, repl, n
 ---@return string
 ---@return integer count
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.gsub(s, pattern, repl, n) end
 
 ---
@@ -95,6 +113,8 @@ function unicode.ascii.gsub(s, pattern, repl, n) end
 ---@param s string
 ---
 ---@return integer
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.len(s) end
 
 ---
@@ -103,6 +123,8 @@ function unicode.ascii.len(s) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.lower(s) end
 
 ---
@@ -113,6 +135,8 @@ function unicode.ascii.lower(s) end
 ---@param init? integer
 ---
 ---@return any ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.match(s, pattern, init) end
 
 ---
@@ -122,6 +146,8 @@ function unicode.ascii.match(s, pattern, init) end
 ---@param n integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.rep(s, n) end
 
 ---
@@ -130,6 +156,8 @@ function unicode.ascii.rep(s, n) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.reverse(s) end
 
 ---
@@ -140,6 +168,8 @@ function unicode.ascii.reverse(s) end
 ---@param j? integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.sub(s, i, j) end
 
 ---
@@ -148,8 +178,12 @@ function unicode.ascii.sub(s, i, j) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.upper(s) end
 
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 unicode.latin1 = {}
 
 ---
@@ -160,6 +194,8 @@ unicode.latin1 = {}
 ---@param j? integer
 ---
 ---@return integer ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.byte(s, i, j) end
 
 ---
@@ -169,12 +205,16 @@ function unicode.latin1.byte(s, i, j) end
 ---@param ... integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.char(byte, ...) end
 
 ---
 ---Returns a string containing a binary representation (a binary chunk) of the given function.
 ---
 ---@param f fun(...: any):...unknown
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.dump(f) end
 
 ---
@@ -186,6 +226,8 @@ function unicode.latin1.dump(f) end
 ---
 ---@return integer start
 ---@return integer end
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.find(s, pattern, init) end
 
 ---
@@ -195,6 +237,8 @@ function unicode.latin1.find(s, pattern, init) end
 ---@param ... any
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.format(s, ...) end
 
 ---
@@ -204,6 +248,8 @@ function unicode.latin1.format(s, ...) end
 ---@param pattern string
 ---
 ---@return fun():string, ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.gmatch(s, pattern) end
 
 ---
@@ -216,6 +262,8 @@ function unicode.latin1.gmatch(s, pattern) end
 ---
 ---@return string
 ---@return integer count
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.gsub(s, pattern, repl, n) end
 
 ---
@@ -224,6 +272,8 @@ function unicode.latin1.gsub(s, pattern, repl, n) end
 ---@param s string
 ---
 ---@return integer
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.len(s) end
 
 ---
@@ -232,6 +282,8 @@ function unicode.latin1.len(s) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.lower(s) end
 
 ---
@@ -242,6 +294,8 @@ function unicode.latin1.lower(s) end
 ---@param init? integer
 ---
 ---@return any ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.match(s, pattern, init) end
 
 ---
@@ -251,6 +305,8 @@ function unicode.latin1.match(s, pattern, init) end
 ---@param n integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.rep(s, n) end
 
 ---
@@ -259,6 +315,8 @@ function unicode.latin1.rep(s, n) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.reverse(s) end
 
 ---
@@ -269,6 +327,8 @@ function unicode.latin1.reverse(s) end
 ---@param j? integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.sub(s, i, j) end
 
 ---
@@ -277,8 +337,12 @@ function unicode.latin1.sub(s, i, j) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.upper(s) end
 
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 unicode.grapheme = {}
 
 ---
@@ -289,6 +353,8 @@ unicode.grapheme = {}
 ---@param j? integer
 ---
 ---@return integer ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.byte(s, i, j) end
 
 ---
@@ -298,12 +364,16 @@ function unicode.grapheme.byte(s, i, j) end
 ---@param ... integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.char(byte, ...) end
 
 ---
 ---Returns a string containing a binary representation (a binary chunk) of the given function.
 ---
 ---@param f fun(...: any):...unknown
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.dump(f) end
 
 ---
@@ -315,6 +385,8 @@ function unicode.grapheme.dump(f) end
 ---
 ---@return integer start
 ---@return integer end
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.find(s, pattern, init) end
 
 ---
@@ -324,6 +396,8 @@ function unicode.grapheme.find(s, pattern, init) end
 ---@param ... any
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.format(s, ...) end
 
 ---
@@ -333,6 +407,8 @@ function unicode.grapheme.format(s, ...) end
 ---@param pattern string
 ---
 ---@return fun():string, ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.gmatch(s, pattern) end
 
 ---
@@ -345,6 +421,8 @@ function unicode.grapheme.gmatch(s, pattern) end
 ---
 ---@return string
 ---@return integer count
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.gsub(s, pattern, repl, n) end
 
 ---
@@ -353,6 +431,8 @@ function unicode.grapheme.gsub(s, pattern, repl, n) end
 ---@param s string
 ---
 ---@return integer
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.len(s) end
 
 ---
@@ -361,6 +441,8 @@ function unicode.grapheme.len(s) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.lower(s) end
 ---
 ---Looks for the first match of pattern in the string.
@@ -370,6 +452,8 @@ function unicode.grapheme.lower(s) end
 ---@param init? integer
 ---
 ---@return any ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.match(s, pattern, init) end
 
 ---
@@ -379,6 +463,8 @@ function unicode.grapheme.match(s, pattern, init) end
 ---@param n integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.rep(s, n) end
 
 ---
@@ -387,6 +473,8 @@ function unicode.grapheme.rep(s, n) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.reverse(s) end
 
 ---
@@ -397,6 +485,8 @@ function unicode.grapheme.reverse(s) end
 ---@param j? integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.sub(s, i, j) end
 
 ---
@@ -405,8 +495,12 @@ function unicode.grapheme.sub(s, i, j) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.upper(s) end
 
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 unicode.utf8 = {}
 
 ---
@@ -417,6 +511,8 @@ unicode.utf8 = {}
 ---@param j? integer
 ---
 ---@return integer ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.byte(s, i, j) end
 
 ---
@@ -426,12 +522,16 @@ function unicode.utf8.byte(s, i, j) end
 ---@param ... integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.char(byte, ...) end
 
 ---
 ---Returns a string containing a binary representation (a binary chunk) of the given function.
 ---
 ---@param f fun(...: any):...unknown
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.dump(f) end
 
 ---
@@ -443,6 +543,8 @@ function unicode.utf8.dump(f) end
 ---
 ---@return integer start
 ---@return integer end
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.find(s, pattern, init) end
 
 ---
@@ -452,6 +554,8 @@ function unicode.utf8.find(s, pattern, init) end
 ---@param ... any
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.format(s, ...) end
 
 ---
@@ -461,6 +565,8 @@ function unicode.utf8.format(s, ...) end
 ---@param pattern string
 ---
 ---@return fun():string, ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.gmatch(s, pattern) end
 
 ---
@@ -473,6 +579,8 @@ function unicode.utf8.gmatch(s, pattern) end
 ---
 ---@return string
 ---@return integer count
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.gsub(s, pattern, repl, n) end
 
 ---
@@ -481,6 +589,8 @@ function unicode.utf8.gsub(s, pattern, repl, n) end
 ---@param s string
 ---
 ---@return integer
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.len(s) end
 
 ---
@@ -489,6 +599,8 @@ function unicode.utf8.len(s) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.lower(s) end
 
 ---
@@ -499,6 +611,8 @@ function unicode.utf8.lower(s) end
 ---@param init? integer
 ---
 ---@return any ...
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.match(s, pattern, init) end
 
 ---
@@ -508,6 +622,8 @@ function unicode.utf8.match(s, pattern, init) end
 ---@param n integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.rep(s, n) end
 
 ---
@@ -516,6 +632,8 @@ function unicode.utf8.rep(s, n) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.reverse(s) end
 
 ---
@@ -526,6 +644,8 @@ function unicode.utf8.reverse(s) end
 ---@param j? integer
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.sub(s, i, j) end
 
 ---
@@ -534,6 +654,8 @@ function unicode.utf8.sub(s, i, j) end
 ---@param s string
 ---
 ---@return string
+---
+---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.upper(s) end
 
 return unicode

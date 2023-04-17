@@ -2,15 +2,15 @@
 ---The definitions are developed in this repository: https://github.com/LuaCATS/slnunicode
 
 ---
----there are four string-like ctype closures:
----unicode.ascii, latin1, utf8 and grapheme
+---There are four string-like ctype closures:
+---`ascii`, `latin1`, `utf8` and `grapheme`
 ---
----ascii and latin1 are single-byte like string,
----but use the unicode table for upper/lower and character classes
----ascii does not touch bytes > 127 on upper/lower
+---`ascii` and `latin1` are single-byte like string,
+---but use the `unicode` table for upper/lower and character classes.
+---`ascii` does not touch bytes > 127 on upper/lower.
 ---
----ascii or latin1 can be used as locale-independent string replacement.
----(There is a compile switch to do this automatically for ascii).
+---`ascii` or `latin1` can be used as locale-Independent string replacement.
+---(There is a compile switch to do this automatically for `ascii`).
 --
 ---UTF-8 operates on UTF-8 sequences as of RFC 3629:
 ---1 byte 0-7F, 2 byte 80-7FF, 3 byte 800-FFFF, 4 byte 1000-10FFFF
@@ -28,7 +28,9 @@ local unicode = {}
 unicode.ascii = {}
 
 ---
----Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---Return the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@see string.byte
 ---
 ---@param s string
 ---@param i? integer
@@ -40,7 +42,9 @@ unicode.ascii = {}
 function unicode.ascii.byte(s, i, j) end
 
 ---
----Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---Return a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@see string.char
 ---
 ---@param byte integer
 ---@param ... integer
@@ -51,7 +55,9 @@ function unicode.ascii.byte(s, i, j) end
 function unicode.ascii.char(byte, ...) end
 
 ---
----Returns a string containing a binary representation (a binary chunk) of the given function.
+---Return a string containing a binary representation (a binary chunk) of the given function.
+---
+---@see string.dump
 ---
 ---@param f fun(...: any):...unknown
 ---
@@ -59,7 +65,9 @@ function unicode.ascii.char(byte, ...) end
 function unicode.ascii.dump(f) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.find
 ---
 ---@param s string
 ---@param pattern string
@@ -72,7 +80,9 @@ function unicode.ascii.dump(f) end
 function unicode.ascii.find(s, pattern, init) end
 
 ---
----Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---Return a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@see string.format
 ---
 ---@param s any
 ---@param ... any
@@ -83,24 +93,28 @@ function unicode.ascii.find(s, pattern, init) end
 function unicode.ascii.format(s, ...) end
 
 ---
----Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---Return an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@see string.gmatch
 ---
 ---@param s string
 ---@param pattern string
 ---
----@return fun():string, ...
+---@return fun(): string, ...
 ---
 ---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.ascii.gmatch(s, pattern) end
 
 ---
----Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---Return a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@see string.gsub
 ---
 ---@param s string
 ---@param pattern string
 ---@param repl string|number|table|function
 ---@param n? integer
----s, pattern, repl, n
+---
 ---@return string
 ---@return integer count
 ---
@@ -108,7 +122,9 @@ function unicode.ascii.gmatch(s, pattern) end
 function unicode.ascii.gsub(s, pattern, repl, n) end
 
 ---
----Returns its length.
+---Return its length.
+---
+---@see string.len
 ---
 ---@param s string
 ---
@@ -118,7 +134,9 @@ function unicode.ascii.gsub(s, pattern, repl, n) end
 function unicode.ascii.len(s) end
 
 ---
----Returns a copy of this string with all uppercase letters changed to lowercase.
+---Return a copy of this string with all uppercase letters changed to lowercase.
+---
+---@see string.lower
 ---
 ---@param s string
 ---
@@ -128,7 +146,9 @@ function unicode.ascii.len(s) end
 function unicode.ascii.lower(s) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.gmatch
 ---
 ---@param s string
 ---@param pattern string
@@ -140,7 +160,9 @@ function unicode.ascii.lower(s) end
 function unicode.ascii.match(s, pattern, init) end
 
 ---
----Returns a string that is the concatenation of `n` copies of the string `s`.
+---Return a string that is the concatenation of `n` copies of the string `s`.
+---
+---@see string.rep
 ---
 ---@param s string
 ---@param n integer
@@ -151,7 +173,9 @@ function unicode.ascii.match(s, pattern, init) end
 function unicode.ascii.rep(s, n) end
 
 ---
----Returns a string that is the string `s` reversed.
+---Return a string that is the string `s` reversed.
+---
+---@see string.reverse
 ---
 ---@param s string
 ---
@@ -161,7 +185,9 @@ function unicode.ascii.rep(s, n) end
 function unicode.ascii.reverse(s) end
 
 ---
----Returns the substring of the string that starts at `i` and continues until `j`.
+---Return the substring of the string that starts at `i` and continues until `j`.
+---
+---@see string.sub
 ---
 ---@param s string
 ---@param i integer
@@ -173,7 +199,9 @@ function unicode.ascii.reverse(s) end
 function unicode.ascii.sub(s, i, j) end
 
 ---
----Returns a copy of this string with all lowercase letters changed to uppercase.
+---Return a copy of this string with all lowercase letters changed to uppercase.
+---
+---@see string.upper
 ---
 ---@param s string
 ---
@@ -187,7 +215,9 @@ function unicode.ascii.upper(s) end
 unicode.latin1 = {}
 
 ---
----Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---Return the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@see string.byte
 ---
 ---@param s string
 ---@param i? integer
@@ -199,7 +229,9 @@ unicode.latin1 = {}
 function unicode.latin1.byte(s, i, j) end
 
 ---
----Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---Return a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@see string.char
 ---
 ---@param byte integer
 ---@param ... integer
@@ -210,7 +242,7 @@ function unicode.latin1.byte(s, i, j) end
 function unicode.latin1.char(byte, ...) end
 
 ---
----Returns a string containing a binary representation (a binary chunk) of the given function.
+---Return a string containing a binary representation (a binary chunk) of the given function.
 ---
 ---@param f fun(...: any):...unknown
 ---
@@ -218,7 +250,9 @@ function unicode.latin1.char(byte, ...) end
 function unicode.latin1.dump(f) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.find
 ---
 ---@param s string
 ---@param pattern string
@@ -231,7 +265,9 @@ function unicode.latin1.dump(f) end
 function unicode.latin1.find(s, pattern, init) end
 
 ---
----Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---Return a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@see string.format
 ---
 ---@param s any
 ---@param ... any
@@ -242,18 +278,22 @@ function unicode.latin1.find(s, pattern, init) end
 function unicode.latin1.format(s, ...) end
 
 ---
----Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---Return an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@see string.gmatch
 ---
 ---@param s string
 ---@param pattern string
 ---
----@return fun():string, ...
+---@return fun(): string, ...
 ---
 ---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.latin1.gmatch(s, pattern) end
 
 ---
----Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---Return a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@see string.gsub
 ---
 ---@param s string
 ---@param pattern string
@@ -267,7 +307,9 @@ function unicode.latin1.gmatch(s, pattern) end
 function unicode.latin1.gsub(s, pattern, repl, n) end
 
 ---
----Returns its length.
+---Return its length.
+---
+---@see string.len
 ---
 ---@param s string
 ---
@@ -277,7 +319,9 @@ function unicode.latin1.gsub(s, pattern, repl, n) end
 function unicode.latin1.len(s) end
 
 ---
----Returns a copy of this string with all uppercase letters changed to lowercase.
+---Return a copy of this string with all uppercase letters changed to lowercase.
+---
+---@see string.lower
 ---
 ---@param s string
 ---
@@ -287,7 +331,9 @@ function unicode.latin1.len(s) end
 function unicode.latin1.lower(s) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.match
 ---
 ---@param s string
 ---@param pattern string
@@ -299,7 +345,9 @@ function unicode.latin1.lower(s) end
 function unicode.latin1.match(s, pattern, init) end
 
 ---
----Returns a string that is the concatenation of `n` copies of the string `s`.
+---Return a string that is the concatenation of `n` copies of the string `s`.
+---
+---@see string.rep
 ---
 ---@param s string
 ---@param n integer
@@ -310,7 +358,9 @@ function unicode.latin1.match(s, pattern, init) end
 function unicode.latin1.rep(s, n) end
 
 ---
----Returns a string that is the string `s` reversed.
+---Return a string that is the string `s` reversed.
+---
+---@see string.reverse
 ---
 ---@param s string
 ---
@@ -320,7 +370,9 @@ function unicode.latin1.rep(s, n) end
 function unicode.latin1.reverse(s) end
 
 ---
----Returns the substring of the string that starts at `i` and continues until `j`.
+---Return the substring of the string that starts at `i` and continues until `j`.
+---
+---@see string.sub
 ---
 ---@param s string
 ---@param i integer
@@ -332,7 +384,9 @@ function unicode.latin1.reverse(s) end
 function unicode.latin1.sub(s, i, j) end
 
 ---
----Returns a copy of this string with all lowercase letters changed to uppercase.
+---Return a copy of this string with all lowercase letters changed to uppercase.
+---
+---@see string.upper
 ---
 ---@param s string
 ---
@@ -346,7 +400,9 @@ function unicode.latin1.upper(s) end
 unicode.grapheme = {}
 
 ---
----Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---Return the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@see string.byte
 ---
 ---@param s string
 ---@param i? integer
@@ -358,7 +414,9 @@ unicode.grapheme = {}
 function unicode.grapheme.byte(s, i, j) end
 
 ---
----Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---Return a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@see string.char
 ---
 ---@param byte integer
 ---@param ... integer
@@ -369,15 +427,19 @@ function unicode.grapheme.byte(s, i, j) end
 function unicode.grapheme.char(byte, ...) end
 
 ---
----Returns a string containing a binary representation (a binary chunk) of the given function.
+---Return a string containing a binary representation (a binary chunk) of the given function.
 ---
----@param f fun(...: any):...unknown
+---@see string.dump
+---
+---@param f fun(...: any): ...unknown
 ---
 ---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.dump(f) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.find
 ---
 ---@param s string
 ---@param pattern string
@@ -390,7 +452,9 @@ function unicode.grapheme.dump(f) end
 function unicode.grapheme.find(s, pattern, init) end
 
 ---
----Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---Return a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@see string.format
 ---
 ---@param s any
 ---@param ... any
@@ -401,18 +465,22 @@ function unicode.grapheme.find(s, pattern, init) end
 function unicode.grapheme.format(s, ...) end
 
 ---
----Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---Return an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@see string.gmatch
 ---
 ---@param s string
 ---@param pattern string
 ---
----@return fun():string, ...
+---@return fun(): string, ...
 ---
 ---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.gmatch(s, pattern) end
 
 ---
----Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---Return a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@see string.gsub
 ---
 ---@param s string
 ---@param pattern string
@@ -426,7 +494,9 @@ function unicode.grapheme.gmatch(s, pattern) end
 function unicode.grapheme.gsub(s, pattern, repl, n) end
 
 ---
----Returns its length.
+---Return its length.
+---
+---@see string.len
 ---
 ---@param s string
 ---
@@ -436,7 +506,9 @@ function unicode.grapheme.gsub(s, pattern, repl, n) end
 function unicode.grapheme.len(s) end
 
 ---
----Returns a copy of this string with all uppercase letters changed to lowercase.
+---Return a copy of this string with all uppercase letters changed to lowercase.
+---
+---@see string.lower
 ---
 ---@param s string
 ---
@@ -445,7 +517,9 @@ function unicode.grapheme.len(s) end
 ---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.grapheme.lower(s) end
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.match
 ---
 ---@param s string
 ---@param pattern string
@@ -457,7 +531,9 @@ function unicode.grapheme.lower(s) end
 function unicode.grapheme.match(s, pattern, init) end
 
 ---
----Returns a string that is the concatenation of `n` copies of the string `s`.
+---Return a string that is the concatenation of `n` copies of the string `s`.
+---
+---@see string.rep
 ---
 ---@param s string
 ---@param n integer
@@ -468,7 +544,9 @@ function unicode.grapheme.match(s, pattern, init) end
 function unicode.grapheme.rep(s, n) end
 
 ---
----Returns a string that is the string `s` reversed.
+---Return a string that is the string `s` reversed.
+---
+---@see string.reverse
 ---
 ---@param s string
 ---
@@ -478,7 +556,9 @@ function unicode.grapheme.rep(s, n) end
 function unicode.grapheme.reverse(s) end
 
 ---
----Returns the substring of the string that starts at `i` and continues until `j`.
+---Return the substring of the string that starts at `i` and continues until `j`.
+---
+---@see string.sub
 ---
 ---@param s string
 ---@param i integer
@@ -490,7 +570,9 @@ function unicode.grapheme.reverse(s) end
 function unicode.grapheme.sub(s, i, j) end
 
 ---
----Returns a copy of this string with all lowercase letters changed to uppercase.
+---Return a copy of this string with all lowercase letters changed to uppercase.
+---
+---@see string.upper
 ---
 ---@param s string
 ---
@@ -504,7 +586,9 @@ function unicode.grapheme.upper(s) end
 unicode.utf8 = {}
 
 ---
----Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---Return the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+---
+---@see string.byte
 ---
 ---@param s string
 ---@param i? integer
@@ -516,7 +600,9 @@ unicode.utf8 = {}
 function unicode.utf8.byte(s, i, j) end
 
 ---
----Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---Return a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+---
+---@see string.char
 ---
 ---@param byte integer
 ---@param ... integer
@@ -527,7 +613,9 @@ function unicode.utf8.byte(s, i, j) end
 function unicode.utf8.char(byte, ...) end
 
 ---
----Returns a string containing a binary representation (a binary chunk) of the given function.
+---Return a string containing a binary representation (a binary chunk) of the given function.
+---
+---@see string.dump
 ---
 ---@param f fun(...: any):...unknown
 ---
@@ -535,7 +623,9 @@ function unicode.utf8.char(byte, ...) end
 function unicode.utf8.dump(f) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
+---
+---@see string.find
 ---
 ---@param s string
 ---@param pattern string
@@ -548,7 +638,9 @@ function unicode.utf8.dump(f) end
 function unicode.utf8.find(s, pattern, init) end
 
 ---
----Returns a formatted version of its variable number of arguments following the description given in its first argument.
+---Return a formatted version of its variable number of arguments following the description given in its first argument.
+---
+---@see string.format
 ---
 ---@param s any
 ---@param ... any
@@ -559,18 +651,22 @@ function unicode.utf8.find(s, pattern, init) end
 function unicode.utf8.format(s, ...) end
 
 ---
----Returns an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---Return an iterator function that, each time it is called, returns the next captures from `pattern` over the string `s`.
+---
+---@see string.gmatch
 ---
 ---@param s string
 ---@param pattern string
 ---
----@return fun():string, ...
+---@return fun(): string, ...
 ---
 ---😱 [Types](https://github.com/LuaCATS/slnunicode/blob/main/library/unicode.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/slnunicode/pulls)
 function unicode.utf8.gmatch(s, pattern) end
 
 ---
----Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---Return a copy of `s` in which all (or the first `n`, if given) occurrences of the pattern have been replaced by a replacement string specified by `repl`.
+---
+---@see string.gsub
 ---
 ---@param s string
 ---@param pattern string
@@ -584,7 +680,9 @@ function unicode.utf8.gmatch(s, pattern) end
 function unicode.utf8.gsub(s, pattern, repl, n) end
 
 ---
----Returns its length.
+---Return its length.
+---
+---@see string.len
 ---
 ---@param s string
 ---
@@ -594,7 +692,9 @@ function unicode.utf8.gsub(s, pattern, repl, n) end
 function unicode.utf8.len(s) end
 
 ---
----Returns a copy of this string with all uppercase letters changed to lowercase.
+---Return a copy of this string with all uppercase letters changed to lowercase.
+---
+---@see string.lower
 ---
 ---@param s string
 ---
@@ -604,7 +704,7 @@ function unicode.utf8.len(s) end
 function unicode.utf8.lower(s) end
 
 ---
----Looks for the first match of pattern in the string.
+---Look for the first match of pattern in the string.
 ---
 ---@param s string
 ---@param pattern string
@@ -616,7 +716,9 @@ function unicode.utf8.lower(s) end
 function unicode.utf8.match(s, pattern, init) end
 
 ---
----Returns a string that is the concatenation of `n` copies of the string `s`.
+---Return a string that is the concatenation of `n` copies of the string `s`.
+---
+---@see string.rep
 ---
 ---@param s string
 ---@param n integer
@@ -627,7 +729,9 @@ function unicode.utf8.match(s, pattern, init) end
 function unicode.utf8.rep(s, n) end
 
 ---
----Returns a string that is the string `s` reversed.
+---Return a string that is the string `s` reversed.
+---
+---@see string.reverse
 ---
 ---@param s string
 ---
@@ -637,7 +741,9 @@ function unicode.utf8.rep(s, n) end
 function unicode.utf8.reverse(s) end
 
 ---
----Returns the substring of the string that starts at `i` and continues until `j`.
+---Return the substring of the string that starts at `i` and continues until `j`.
+---
+---@see string.sub
 ---
 ---@param s string
 ---@param i integer
@@ -649,7 +755,9 @@ function unicode.utf8.reverse(s) end
 function unicode.utf8.sub(s, i, j) end
 
 ---
----Returns a copy of this string with all lowercase letters changed to uppercase.
+---Return a copy of this string with all lowercase letters changed to uppercase.
+---
+---@see string.upper
 ---
 ---@param s string
 ---
